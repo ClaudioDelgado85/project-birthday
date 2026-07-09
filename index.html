@@ -12,7 +12,7 @@
     <meta property="og:type" content="website">
 
     <!-- Fonts + Icons + AOS -->
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Sofia&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -93,19 +93,9 @@
             overflow: hidden;
         }
 
-        /* Rayas decorativas de fondo */
+        /* Eliminamos las rayas verticales que competían con el número 3 */
         .invitation-text-section::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                rgba(255,255,255,0.04) 0px,
-                rgba(255,255,255,0.04) 40px,
-                transparent 40px,
-                transparent 80px
-            );
-            pointer-events: none;
+            display: none;
         }
 
         /* Ola inferior */
@@ -187,17 +177,17 @@
         }
 
         .inv-name {
-            font-family: 'Outfit', sans-serif;
-            font-weight: 900;
-            font-size: 2rem;
-            color: rgba(255,255,255,0.95);
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            display: block;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
-            margin-bottom: 4px;
+            font-family: 'Sofia', cursive;
+            font-size: 4.8rem;
+            color: #ffffff;
+            text-transform: none;
+            letter-spacing: normal;
+            display: inline-block;
+            text-shadow: 0 4px 15px rgba(91, 42, 134, 0.4), 0 2px 4px rgba(0,0,0,0.15);
+            margin-bottom: -6px;
             position: relative;
             z-index: 2;
+            transform: rotate(-3deg);
         }
 
         .inv-cumple-label {
@@ -459,19 +449,9 @@
             clip-path: ellipse(55% 100% at 50% 0%);
         }
 
-        /* Rayas verticales decorativas */
+        /* Eliminamos las rayas verticales */
         .confirmacion-section::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: repeating-linear-gradient(
-                90deg,
-                rgba(255,255,255,0.04) 0px,
-                rgba(255,255,255,0.04) 40px,
-                transparent 40px,
-                transparent 80px
-            );
-            pointer-events: none;
+            display: none;
         }
 
         .confirmacion-emoji {
@@ -841,6 +821,14 @@
             --fondo-gradiente: linear-gradient(160deg, #B57EDC 0%, #FF7BAA 100%);
         }
 
+        /* Siluetas de mariposas de fondo */
+        .bg-butterfly {
+            position: absolute;
+            fill: rgba(255, 255, 255, 0.05); /* Muy sutil y traslúcida */
+            pointer-events: none;
+            z-index: 0;
+        }
+
         /* Ajustes para móviles */
         @media (max-width: 768px) {
             /* Eliminamos el delay de las animaciones en móvil para evitar que
@@ -883,6 +871,11 @@
 
     <!-- 2. SECCIÓN TEXTO DE INVITACIÓN -->
     <section class="invitation-text-section">
+        <!-- Mariposas decorativas de fondo -->
+        <svg class="bg-butterfly" style="left: 6%; top: 12%; width: 55px; height: 55px; transform: rotate(-25deg);" viewBox="0 0 100 100"><path d="M85,25c-9.985,0-21.584,5.159-29.209,12.74c-0.189-0.23-0.396-0.445-0.611-0.651l4.746-18.983 c0.334-1.339-0.479-2.697-1.819-3.032c-1.343-0.335-2.697,0.479-3.032,1.819l-4.533,18.134C50.361,35.015,50.182,35,50,35 s-0.361,0.015-0.541,0.027l-4.533-18.134c-0.336-1.34-1.699-2.155-3.032-1.819c-1.34,0.335-2.153,1.692-1.819,3.032l4.746,18.983 c-0.215,0.206-0.422,0.421-0.611,0.651C36.584,30.159,24.985,25,15,25C9.486,25,5,29.486,5,35c0,1.082,0.173,2.146,0.512,3.164 l4.999,15c1.247,3.74,4.546,6.35,8.401,6.769C16.49,62.599,15,66.124,15,70c0,8.271,6.729,15,15,15 c4.767,0,9.144-2.189,12.007-6.007l5.493-7.325V77.5c0,1.381,1.119,2.5,2.5,2.5s2.5-1.119,2.5-2.5v-5.832l5.493,7.324 C60.856,82.81,65.232,85,70,85c8.271,0,15-6.729,15-15c0-3.876-1.49-7.401-3.911-10.066c3.854-0.419,7.154-3.029,8.401-6.77 l5-15.002C94.828,37.144,95,36.08,95,35C95,29.486,90.514,25,85,25z"/></svg>
+        <svg class="bg-butterfly" style="right: 8%; top: 40%; width: 70px; height: 70px; transform: rotate(15deg);" viewBox="0 0 100 100"><path d="M85,25c-9.985,0-21.584,5.159-29.209,12.74c-0.189-0.23-0.396-0.445-0.611-0.651l4.746-18.983 c0.334-1.339-0.479-2.697-1.819-3.032c-1.343-0.335-2.697,0.479-3.032,1.819l-4.533,18.134C50.361,35.015,50.182,35,50,35 s-0.361,0.015-0.541,0.027l-4.533-18.134c-0.336-1.34-1.699-2.155-3.032-1.819c-1.34,0.335-2.153,1.692-1.819,3.032l4.746,18.983 c-0.215,0.206-0.422,0.421-0.611,0.651C36.584,30.159,24.985,25,15,25C9.486,25,5,29.486,5,35c0,1.082,0.173,2.146,0.512,3.164 l4.999,15c1.247,3.74,4.546,6.35,8.401,6.769C16.49,62.599,15,66.124,15,70c0,8.271,6.729,15,15,15 c4.767,0,9.144-2.189,12.007-6.007l5.493-7.325V77.5c0,1.381,1.119,2.5,2.5,2.5s2.5-1.119,2.5-2.5v-5.832l5.493,7.324 C60.856,82.81,65.232,85,70,85c8.271,0,15-6.729,15-15c0-3.876-1.49-7.401-3.911-10.066c3.854-0.419,7.154-3.029,8.401-6.77 l5-15.002C94.828,37.144,95,36.08,95,35C95,29.486,90.514,25,85,25z"/></svg>
+        <svg class="bg-butterfly" style="left: 10%; bottom: 12%; width: 50px; height: 50px; transform: rotate(-10deg);" viewBox="0 0 100 100"><path d="M85,25c-9.985,0-21.584,5.159-29.209,12.74c-0.189-0.23-0.396-0.445-0.611-0.651l4.746-18.983 c0.334-1.339-0.479-2.697-1.819-3.032c-1.343-0.335-2.697,0.479-3.032,1.819l-4.533,18.134C50.361,35.015,50.182,35,50,35 s-0.361,0.015-0.541,0.027l-4.533-18.134c-0.336-1.34-1.699-2.155-3.032-1.819c-1.34,0.335-2.153,1.692-1.819,3.032l4.746,18.983 c-0.215,0.206-0.422,0.421-0.611,0.651C36.584,30.159,24.985,25,15,25C9.486,25,5,29.486,5,35c0,1.082,0.173,2.146,0.512,3.164 l4.999,15c1.247,3.74,4.546,6.35,8.401,6.769C16.49,62.599,15,66.124,15,70c0,8.271,6.729,15,15,15 c4.767,0,9.144-2.189,12.007-6.007l5.493-7.325V77.5c0,1.381,1.119,2.5,2.5,2.5s2.5-1.119,2.5-2.5v-5.832l5.493,7.324 C60.856,82.81,65.232,85,70,85c8.271,0,15-6.729,15-15c0-3.876-1.49-7.401-3.911-10.066c3.854-0.419,7.154-3.029,8.401-6.77 l5-15.002C94.828,37.144,95,36.08,95,35C95,29.486,90.514,25,85,25z"/></svg>
+
         <!-- Número gigante de fondo -->
         <div class="inv-bg-number">3</div>
 
@@ -1034,6 +1027,10 @@
 
     <!-- 6. SECCIÓN Confirmación de asistencia -->
     <section class="confirmacion-section" data-aos="fade-up">
+        <!-- Mariposas decorativas de fondo -->
+        <svg class="bg-butterfly" style="left: 8%; top: 22%; width: 60px; height: 60px; transform: rotate(-15deg);" viewBox="0 0 100 100"><path d="M85,25c-9.985,0-21.584,5.159-29.209,12.74c-0.189-0.23-0.396-0.445-0.611-0.651l4.746-18.983 c0.334-1.339-0.479-2.697-1.819-3.032c-1.343-0.335-2.697,0.479-3.032,1.819l-4.533,18.134C50.361,35.015,50.182,35,50,35 s-0.361,0.015-0.541,0.027l-4.533-18.134c-0.336-1.34-1.699-2.155-3.032-1.819c-1.34,0.335-2.153,1.692-1.819,3.032l4.746,18.983 c-0.215,0.206-0.422,0.421-0.611,0.651C36.584,30.159,24.985,25,15,25C9.486,25,5,29.486,5,35c0,1.082,0.173,2.146,0.512,3.164 l4.999,15c1.247,3.74,4.546,6.35,8.401,6.769C16.49,62.599,15,66.124,15,70c0,8.271,6.729,15,15,15 c4.767,0,9.144-2.189,12.007-6.007l5.493-7.325V77.5c0,1.381,1.119,2.5,2.5,2.5s2.5-1.119,2.5-2.5v-5.832l5.493,7.324 C60.856,82.81,65.232,85,70,85c8.271,0,15-6.729,15-15c0-3.876-1.49-7.401-3.911-10.066c3.854-0.419,7.154-3.029,8.401-6.77 l5-15.002C94.828,37.144,95,36.08,95,35C95,29.486,90.514,25,85,25z"/></svg>
+        <svg class="bg-butterfly" style="right: 8%; bottom: 15%; width: 55px; height: 55px; transform: rotate(20deg);" viewBox="0 0 100 100"><path d="M85,25c-9.985,0-21.584,5.159-29.209,12.74c-0.189-0.23-0.396-0.445-0.611-0.651l4.746-18.983 c0.334-1.339-0.479-2.697-1.819-3.032c-1.343-0.335-2.697,0.479-3.032,1.819l-4.533,18.134C50.361,35.015,50.182,35,50,35 s-0.361,0.015-0.541,0.027l-4.533-18.134c-0.336-1.34-1.699-2.155-3.032-1.819c-1.34,0.335-2.153,1.692-1.819,3.032l4.746,18.983 c-0.215,0.206-0.422,0.421-0.611,0.651C36.584,30.159,24.985,25,15,25C9.486,25,5,29.486,5,35c0,1.082,0.173,2.146,0.512,3.164 l4.999,15c1.247,3.74,4.546,6.35,8.401,6.769C16.49,62.599,15,66.124,15,70c0,8.271,6.729,15,15,15 c4.767,0,9.144-2.189,12.007-6.007l5.493-7.325V77.5c0,1.381,1.119,2.5,2.5,2.5s2.5-1.119,2.5-2.5v-5.832l5.493,7.324 C60.856,82.81,65.232,85,70,85c8.271,0,15-6.729,15-15c0-3.876-1.49-7.401-3.911-10.066c3.854-0.419,7.154-3.029,8.401-6.77 l5-15.002C94.828,37.144,95,36.08,95,35C95,29.486,90.514,25,85,25z"/></svg>
+
         <div class="confirmacion-emoji">📋</div>
         <h2 class="confirmacion-title">¿Confirmás tu asistencia a la aventura mágica? ✨</h2>
         <p class="confirmacion-subtitle">Avisános antes del 20 de junio</p>
