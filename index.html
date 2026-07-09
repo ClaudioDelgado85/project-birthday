@@ -955,7 +955,7 @@
                     </div>
                     <div class="detail-info">
                         <span class="detail-label">Hora</span>
-                        <span class="detail-value">17:00 hs</span>
+                        <span class="detail-value">18:00 hs</span>
                         <span class="detail-subtext">"Que no te gane la magia 💫"</span>
                     </div>
                 </div>
@@ -982,7 +982,7 @@
                     </div>
                     <div class="detail-info">
                         <span class="detail-label">Dirección</span>
-                        <span class="detail-value">B° 500 Mza 20 Casa 11</span>
+                        <span class="detail-value">B° 500 Mza 23 Casa 11</span>
                     </div>
                 </div>
             </div>
@@ -1036,11 +1036,11 @@
         <p class="confirmacion-subtitle">Avisános antes del 20 de junio</p>
 
         <div class="confirmacion-buttons">
-            <a href="https://api.whatsapp.com/send/?phone=5491139587328&text=%C2%A1Confirmo+asistencia+al+cumple+m%C3%A1gico+de+Aimara+%E2%9C%A8+el+11+de+julio%21" target="_blank" class="btn-confirmacion-yes">
+            <a href="https://api.whatsapp.com/send/?phone=5493718683903&text=%C2%A1Confirmo+asistencia+al+cumple+m%C3%A1gico+de+Aimara+%E2%9C%A8+el+11+de+julio%21" target="_blank" class="btn-confirmacion-yes">
                 ✅ ¡Allí estaré para celebrar!
             </a>
 
-            <a href="https://api.whatsapp.com/send/?phone=5491139587328&text=Lamentablemente+no+podr%C3%A9+asistir+a+la+fiesta+m%C3%A1gica+de+Aimara+%F0%9F%98%94" target="_blank" class="btn-confirmacion-no">
+            <a href="https://api.whatsapp.com/send/?phone=5493718683903&text=Lamentablemente+no+podr%C3%A9+asistir+a+la+fiesta+m%C3%A1gica+de+Aimara+%F0%9F%98%94" target="_blank" class="btn-confirmacion-no">
                 😔 No podré ir esta vez
             </a>
         </div>
@@ -1090,47 +1090,35 @@
         actualizarCountdown();
         setInterval(actualizarCountdown, 1000);
 
-        // Formas personalizadas creadas una sola vez para evitar recargas en memoria
-        const figuraMariposa = confetti.shapeFromPath({
-            path: 'M85,25c-9.985,0-21.584,5.159-29.209,12.74c-0.189-0.23-0.396-0.445-0.611-0.651l4.746-18.983 c0.334-1.339-0.479-2.697-1.819-3.032c-1.343-0.335-2.697,0.479-3.032,1.819l-4.533,18.134C50.361,35.015,50.182,35,50,35 s-0.361,0.015-0.541,0.027l-4.533-18.134c-0.336-1.34-1.699-2.155-3.032-1.819c-1.34,0.335-2.153,1.692-1.819,3.032l4.746,18.983 c-0.215,0.206-0.422,0.421-0.611,0.651C36.584,30.159,24.985,25,15,25C9.486,25,5,29.486,5,35c0,1.082,0.173,2.146,0.512,3.164 l4.999,15c1.247,3.74,4.546,6.35,8.401,6.769C16.49,62.599,15,66.124,15,70c0,8.271,6.729,15,15,15 c4.767,0,9.144-2.189,12.007-6.007l5.493-7.325V77.5c0,1.381,1.119,2.5,2.5,2.5s2.5-1.119,2.5-2.5v-5.832l5.493,7.324 C60.856,82.81,65.232,85,70,85c8.271,0,15-6.729,15-15c0-3.876-1.49-7.401-3.911-10.066c3.854-0.419,7.154-3.029,8.401-6.77 l5-15.002C94.828,37.144,95,36.08,95,35C95,29.486,90.514,25,85,25z'
-        });
-
-        const figuraEstrella = confetti.shapeFromPath({
-            path: 'M50 0l15 35h35l-28 20 10 35-32-22-32 22 10-35-28-20h35z'
-        });
-
         // Confeti de mariposas al hacer el primer scroll
         let confetiLanzado = false;
         window.addEventListener('scroll', () => {
             if (!confetiLanzado && window.scrollY > 50) {
                 confetiLanzado = true;
-                const isMobile = window.innerWidth < 768;
 
                 // Primera oleada — desde arriba, partículas lentas
                 confetti({
-                    particleCount: isMobile ? 90 : 160,
+                    particleCount: 180,
                     spread: 130,
                     origin: { y: 0.05 },
-                    colors: ['#D4A5E6', '#FF9EC4', '#F8C8DC', '#FFD700', '#FFFFFF'], // Colores mágicos pastel
-                    ticks: isMobile ? 300 : 500, // Menos duración en móvil para ahorrar rendimiento
-                    gravity: 0.35, // Caída lenta simula aleteo
-                    shapes: ['circle', figuraEstrella, figuraMariposa],
-                    scalar: isMobile ? 1.0 : 1.2
+                    colors: ['#9B59B6', '#E91E63', '#C39BD3', '#FFD700', '#FFFFFF'],
+                    ticks: 500,
+                    gravity: 0.35,
+                    shapes: ['circle']
                 });
 
                 // Segunda oleada — desde el centro, como mariposas revoloteando
                 setTimeout(() => {
                     confetti({
-                        particleCount: isMobile ? 40 : 80,
+                        particleCount: 80,
                         spread: 100,
                         origin: { y: 0.5, x: 0.3 },
                         colors: ['#D4A5E6', '#FF9EC4', '#F8C8DC', '#FFD700'],
-                        ticks: isMobile ? 250 : 450,
+                        ticks: 450,
                         gravity: 0.3,
-                        shapes: ['circle', figuraEstrella, figuraMariposa],
-                        scalar: isMobile ? 0.9 : 1.1
+                        shapes: ['circle']
                     });
-                }, 350);
+                }, 300);
             }
         }, { passive: true });
 
