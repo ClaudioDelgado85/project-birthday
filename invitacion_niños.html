@@ -1,0 +1,1586 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>⚽ ¡Estás invitado al cumple de Mateo!</title>
+
+    <!-- Open Graph para compartir -->
+    <meta property="og:title" content="⚽ ¡Estás invitado al cumple de Mateo!">
+    <meta property="og:description" content="Martes 24 de junio · 17:00 hs · Salón El Estadio">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1518091043644-c1d4457512c0?w=600">
+    <meta property="og:type" content="website">
+
+    <!-- Fonts + Icons + AOS -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <style>
+        /* Estilos Globales */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            overscroll-behavior: none;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f8ff;
+            background-image:
+                radial-gradient(ellipse at 15% 30%, rgba(116, 172, 223, 0.12) 0%, transparent 50%),
+                radial-gradient(ellipse at 85% 70%, rgba(116, 172, 223, 0.10) 0%, transparent 50%),
+                repeating-linear-gradient(
+                    -45deg,
+                    transparent,
+                    transparent 28px,
+                    rgba(116, 172, 223, 0.04) 28px,
+                    rgba(116, 172, 223, 0.04) 30px
+                );
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            box-shadow: 0 0 40px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Decoraciones flotantes de fondo */
+        .bg-decorations {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-ball {
+            position: absolute;
+            opacity: 0.12;
+            animation: floatBall linear infinite;
+            user-select: none;
+            color: #74ACDF;
+            filter: drop-shadow(0 0 4px rgba(116, 172, 223, 0.3));
+        }
+
+        @keyframes floatBall {
+            0%   { transform: translateY(0px) rotate(0deg); }
+            50%  { transform: translateY(-14px) rotate(180deg); }
+            100% { transform: translateY(0px) rotate(360deg); }
+        }
+
+        /* Todas las secciones sobre el fondo */
+        section, footer {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* 1. SECCIÓN CONTENEDOR FIGURITA (Álbum) */
+        .sticker-header-container {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.45)), url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=800');
+            background-size: cover;
+            background-position: center;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* La Figurita (Panini) */
+        .card-sticker {
+            position: relative;
+            width: 100%;
+            max-width: 360px;
+            height: 504px;
+            /* Aspect Ratio ~2.5:3.5 (360px x 504px) */
+            border-radius: 16px;
+            border: 4px solid #c9a227;
+            /* Dorado oscuro */
+            background-image: url('https://images.unsplash.com/photo-1557683316-973673baf926?w=400');
+            background-size: cover;
+            background-position: center;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            /* Animaciones */
+            animation: entradaFigurita 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.1) 1.2s forwards,
+                flotarSticker 4s ease-in-out 3s infinite alternate;
+            opacity: 0;
+            transform-origin: center;
+        }
+
+        /* Brillo de metal / Glossy Overlay */
+        .card-sticker::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.18) 0%, rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 100%);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Inset Marco Fino Blanco */
+        .sticker-inner-frame {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            pointer-events: none;
+            z-index: 1;
+            border-radius: 10px;
+        }
+
+        /* Número arriba izquierda (parcialmente recortado) */
+        .sticker-bg-number-top {
+            position: absolute;
+            top: -24px;
+            left: -12px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 130px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.28);
+            user-select: none;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        /* Logo FIFA arriba derecha */
+        .sticker-fifa-logo {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: #ffffff;
+            border-radius: 6px;
+            padding: 5px 8px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            z-index: 3;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .sticker-fifa-logo .trophy {
+            font-size: 1.15rem;
+            line-height: 1;
+        }
+
+        .sticker-fifa-logo .text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.52rem;
+            font-weight: 900;
+            color: #0f172a;
+            margin-top: 1px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Número gigante detrás de la foto */
+        .sticker-bg-number-center {
+            position: absolute;
+            top: 45%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Outfit', sans-serif;
+            font-size: 230px;
+            font-weight: 900;
+            color: rgba(14, 165, 233, 0.14);
+            /* Celeste semitransparente */
+            user-select: none;
+            z-index: 0;
+            line-height: 1;
+        }
+
+        /* Foto del bebé */
+        .sticker-photo-container {
+            position: absolute;
+            bottom: 104px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 66%;
+            height: 275px;
+            z-index: 2;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+        }
+
+        .sticker-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            /* Fundido sutil en los bordes para integrarse con la textura oro */
+            mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 85%, transparent 100%);
+        }
+
+        /* Bandera Argentina Capsule (Derecha) */
+        .sticker-flag-pill {
+            position: absolute;
+            right: 16px;
+            bottom: 118px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 6px 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+            z-index: 3;
+            width: 36px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .sticker-flag-circle {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, #74ACDF 33%, #FFFFFF 33%, #FFFFFF 66%, #74ACDF 66%);
+            position: relative;
+            border: 1px solid #cbd5e1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .sticker-flag-circle::after {
+            content: '';
+            position: absolute;
+            width: 5px;
+            height: 5px;
+            background-color: #F8B319;
+            /* Sol de Mayo */
+            border-radius: 50%;
+        }
+
+        .sticker-flag-text {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.65rem;
+            font-weight: 900;
+            color: #0f172a;
+            writing-mode: vertical-rl;
+            text-orientation: upright;
+            letter-spacing: 0.5px;
+            line-height: 1.1;
+        }
+
+        /* Banners inferiores de la figurita */
+        .sticker-bottom-banners {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            right: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            z-index: 3;
+        }
+
+        /* Capa 1: Celeste Argentina */
+        .sticker-banner-green {
+            background: linear-gradient(135deg, #0077C8, #74ACDF);
+            border-radius: 10px;
+            padding: 8px 12px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .sticker-name-line1 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 400;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            line-height: 1;
+            text-transform: uppercase;
+        }
+
+        .sticker-name-line2 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            line-height: 1.1;
+            margin-top: 1px;
+            text-transform: uppercase;
+        }
+
+        .sticker-stats {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.85);
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Capa 2: Amarillo Panini */
+        .sticker-banner-yellow {
+            background: #e8b800;
+            border-radius: 10px;
+            padding: 6px 12px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #0d1117;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            margin-right: 36px;
+            /* Deja espacio para el badge en la esquina */
+        }
+
+        .sticker-club-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .sticker-panini-logo {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+            /* Margen derecho de 10px */
+        }
+
+        .panini-box {
+            background: #cc0000;
+            border: 1.5px solid #ffffff;
+            padding: 1px 5px;
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .panini-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 0.7rem;
+            color: #ffffff;
+            font-style: italic;
+            letter-spacing: 0.5px;
+            line-height: 1;
+        }
+
+        /* Número de figurita esquina inferior derecha */
+        .sticker-number-badge {
+            position: absolute;
+            bottom: 12px;
+            /* Alineado verticalmente con la banda amarilla */
+            right: 12px;
+            background: rgba(13, 17, 23, 0.75);
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 0.65rem;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 4;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Keyframes de la figurita */
+        @keyframes entradaFigurita {
+            0% {
+                transform: scale(0.3) rotate(-5deg);
+                opacity: 0;
+            }
+
+            70% {
+                transform: scale(1.05) rotate(1deg);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1) rotate(0deg);
+                opacity: 1;
+            }
+        }
+
+        @keyframes shimmerFigurita {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 200%;
+            }
+        }
+
+        @keyframes flotarSticker {
+            0% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            100% {
+                transform: translateY(-6px) rotate(0.5deg);
+            }
+        }
+
+        .shimmer-overlay {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: -100%;
+            width: 60%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.45), transparent);
+            transform: skewX(-20deg);
+            animation: shimmerFigurita 1s ease 2.1s forwards;
+            pointer-events: none;
+            z-index: 10;
+        }
+
+
+        /* 2. SECCIÓN TEXTO DE INVITACIÓN - HERO */
+        .invitation-text-section {
+            background: linear-gradient(160deg, #0077C8 0%, #005b9a 40%, #003f70 100%);
+            text-align: center;
+            padding: 55px 24px 70px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Rayas de camiseta argentina */
+        .invitation-text-section::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(255,255,255,0.04) 0px,
+                rgba(255,255,255,0.04) 40px,
+                transparent 40px,
+                transparent 80px
+            );
+            pointer-events: none;
+        }
+
+        /* Ola inferior */
+        .invitation-text-section::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #f0f8ff;
+            clip-path: ellipse(55% 100% at 50% 100%);
+        }
+
+        .inv-bg-number {
+            position: absolute;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 220px;
+            color: rgba(255,255,255,0.05);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            line-height: 1;
+            user-select: none;
+            pointer-events: none;
+            letter-spacing: -10px;
+        }
+
+        .inv-stars {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 14px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inv-star {
+            color: #F8C400;
+            font-size: 1.3rem;
+            filter: drop-shadow(0 0 6px rgba(248, 196, 0, 0.5));
+        }
+
+        .inv-age-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.25);
+            border-radius: 50px;
+            padding: 6px 18px;
+            margin-bottom: 18px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inv-age-badge span {
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.9);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .inv-age-number {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 5rem;
+            color: #ffffff;
+            line-height: 1;
+            display: block;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 8px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inv-name {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 2rem;
+            color: rgba(255,255,255,0.95);
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            display: block;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            margin-bottom: 4px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inv-cumple-label {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.65);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            display: block;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inv-age-row {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 16px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .inv-age-anos {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: rgba(255,255,255,0.85);
+            letter-spacing: 3px;
+            padding-bottom: 12px;
+            text-transform: uppercase;
+        }
+
+        .invitation-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.6;
+            max-width: 320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+
+        /* 3. SECCIÓN CUENTA REGRESIVA */
+        .countdown-section {
+            background: linear-gradient(135deg, #0077C8 0%, #005b9a 100%);
+            border-radius: 24px;
+            margin: 35px 16px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 12px 30px rgba(0, 119, 200, 0.25);
+        }
+
+        .countdown-title {
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .countdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .countdown-block {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 14px 8px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(4px);
+        }
+
+        .countdown-number {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.9rem;
+            color: #ffffff;
+            display: block;
+            line-height: 1;
+        }
+
+        .countdown-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.65rem;
+            color: rgba(255, 255, 255, 0.65);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 5px;
+            display: block;
+            font-weight: 600;
+        }
+
+
+        /* 4. SECCIÓN DETALLES DEL EVENTO (Tarjeta de Estadio) */
+        .details-section {
+            background: #ffffff;
+            padding: 40px 20px;
+        }
+
+        .details-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #0077C8;
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .details-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            max-width: 480px;
+            margin: 0 auto;
+        }
+
+        .detail-card {
+            background: #f8fafc;
+            border-left: 4px solid #0077C8;
+            border-radius: 12px;
+            padding: 16px 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .detail-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+        }
+
+        .detail-icon-wrapper {
+            background: rgba(0, 119, 200, 0.08);
+            color: #0077C8;
+            width: 46px;
+            height: 46px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .detail-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .detail-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .detail-value {
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+            font-size: 1rem;
+            color: #0f172a;
+            margin-top: 2px;
+        }
+
+        .detail-subtext {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            color: #64748b;
+            font-style: italic;
+            margin-top: 3px;
+        }
+
+
+        /* 5. SECCIÓN MAPA INTERACTIVO */
+        .map-section {
+            padding: 40px 16px;
+            background: #f8fafc;
+            text-align: center;
+        }
+
+        .map-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.6rem;
+            color: #0077C8;
+            margin-bottom: 24px;
+        }
+
+        .map-container {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            margin-bottom: 24px;
+            border: 1px solid #e2e8f0;
+            max-width: 480px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-map {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: #0077C8;
+            color: white;
+            padding: 14px 30px;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.05rem;
+            text-decoration: none;
+            box-shadow: 0 10px 20px rgba(0, 119, 200, 0.25);
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-map:hover {
+            background: #005b9a;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0, 119, 200, 0.35);
+        }
+
+        .btn-map:active {
+            transform: scale(0.98);
+        }
+
+
+        /* 6. SECCIÓN Confirmación - Estilo Camiseta Argentina */
+        .confirmacion-section {
+            background: linear-gradient(160deg, #0077C8 0%, #005b9a 40%, #003f70 100%);
+            margin: 0;
+            padding: 70px 24px 55px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ola superior que conecta con la sección de arriba */
+        .confirmacion-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            width: 100%;
+            height: 55px;
+            background: #f8fafc;
+            clip-path: ellipse(55% 100% at 50% 0%);
+        }
+
+        /* Rayas verticales de camiseta */
+        .confirmacion-section::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                rgba(255,255,255,0.04) 0px,
+                rgba(255,255,255,0.04) 40px,
+                transparent 40px,
+                transparent 80px
+            );
+            pointer-events: none;
+        }
+
+        .confirmacion-emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .confirmacion-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+
+        .confirmacion-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.75);
+            margin-bottom: 30px;
+            line-height: 1.5;
+            position: relative;
+            z-index: 2;
+        }
+
+        .confirmacion-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            max-width: 320px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-confirmacion-yes {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            background: #ffffff;
+            color: #0077C8;
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, background-color 0.2s, box-shadow 0.2s;
+        }
+
+        .btn-confirmacion-yes:hover {
+            background: #f0f9ff;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px rgba(0, 0, 0, 0.25);
+        }
+
+        .btn-confirmacion-no {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 16px;
+            background: rgba(255,255,255,0.12);
+            color: rgba(255,255,255,0.9);
+            border-radius: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 2px solid rgba(255,255,255,0.35);
+            backdrop-filter: blur(4px);
+            transition: transform 0.2s, background-color 0.2s;
+        }
+
+        .btn-confirmacion-no:hover {
+            background: rgba(255,255,255,0.2);
+            transform: translateY(-2px);
+        }
+
+        .btn-confirmacion-yes:active,
+        .btn-confirmacion-no:active {
+            transform: scale(0.98);
+        }
+
+
+        /* 7. FOOTER (Negro Estadio) */
+        .footer-section {
+            background: #0d1117;
+            padding: 45px 24px;
+            text-align: center;
+            color: #94a3b8;
+            border-top: 2px solid #1e293b;
+        }
+
+        .footer-title {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 1.15rem;
+            color: #ffffff;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: #64748b;
+            margin-bottom: 26px;
+        }
+
+        .footer-divider {
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        .footer-brand {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.8rem;
+            line-height: 1.5;
+            color: #475569;
+        }
+
+        .footer-brand a {
+            color: #38bdf8;
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        .footer-brand a:hover {
+            color: #7dd3fc;
+            text-decoration: underline;
+        }
+
+        /* Preloader */
+        #preloader {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: none !important;
+            margin: 0 !important;
+            background: linear-gradient(135deg, #0077C8, #005b9a);
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s ease, visibility 0.6s ease;
+        }
+
+        .loader-ball {
+            width: 110px;
+            height: 110px;
+            animation: bounceSpin 1s cubic-bezier(0.28, 0.84, 0.42, 1) infinite alternate;
+            filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+            object-fit: contain;
+        }
+
+        .loader-text {
+            color: white;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-top: 20px;
+            letter-spacing: 1px;
+            animation: pulseText 1.5s ease-in-out infinite alternate;
+        }
+
+        #preloader.exit {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.8s step-end;
+        }
+
+        #preloader.exit .loader-ball {
+            animation: moveToBottom 0.8s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+        }
+
+        #preloader.exit .loader-text {
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        @keyframes bounceSpin {
+            0% { transform: translateY(0) rotate(0deg) scale(1); }
+            100% { transform: translateY(-40px) rotate(360deg) scale(1.1); }
+        }
+
+        @keyframes pulseText {
+            0% { opacity: 0.6; }
+            100% { opacity: 1; }
+        }
+
+        @keyframes moveToBottom {
+            0% {
+                transform: translateY(0) scale(1) rotate(0deg);
+                filter: drop-shadow(0 10px 20px rgba(0,0,0,0.4));
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(calc(50vh - 65px)) scale(0.727) rotate(360deg);
+                filter: drop-shadow(0 5px 12px rgba(0,0,0,0.35));
+                opacity: 0;
+            }
+        }
+
+        /* Interactive Scroll Ball */
+        #interactive-ball-container {
+            position: fixed;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            z-index: 998;
+            pointer-events: auto;
+            cursor: pointer;
+            filter: drop-shadow(0 5px 12px rgba(0,0,0,0.35));
+        }
+
+        #interactive-ball-container.clicked {
+            animation: containerClick 0.3s ease-out;
+        }
+
+        @keyframes containerClick {
+            0% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(0.85); }
+            100% { transform: translateX(-50%) scale(1); }
+        }
+
+        .ball-tooltip {
+            position: absolute;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px) scale(0.8);
+            margin-bottom: 15px;
+            background: white;
+            color: #005b9a;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 800;
+            font-size: 0.9rem;
+            padding: 8px 14px;
+            border-radius: 20px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .ball-tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 6px 6px 0;
+            border-style: solid;
+            border-color: white transparent transparent transparent;
+        }
+
+        .ball-tooltip.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateX(-50%) translateY(0) scale(1);
+        }
+
+        #interactive-ball {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            will-change: transform;
+        }
+
+        /* SECCIÓN MESSI */
+        .messi-section {
+            padding: 30px 16px 10px;
+            background: #f8fafc;
+            display: flex;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .messi-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 0;
+            background: transparent;
+            border-radius: 0;
+            padding: 20px 0;
+            box-shadow: none;
+            max-width: 500px;
+            border: none;
+            width: 100%;
+            position: relative;
+        }
+
+        .messi-img {
+            width: 140px;
+            height: auto;
+            object-fit: contain;
+            border-radius: 0;
+            border: none;
+            background: transparent;
+            box-shadow: none;
+            flex-shrink: 0;
+            z-index: 2;
+            margin-right: -25px;
+            margin-bottom: -10px;
+            filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.25));
+        }
+
+        .messi-bubble {
+            position: relative;
+            background: linear-gradient(135deg, #ffffff, #f1f5f9);
+            border: 1px solid #e2e8f0;
+            padding: 24px 24px 24px 35px;
+            border-radius: 20px;
+            color: #0f172a;
+            flex: 1;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            z-index: 1;
+        }
+
+        .messi-bubble::before {
+            display: none;
+        }
+
+        .messi-quote {
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-style: italic;
+            font-weight: 600;
+            line-height: 1.5;
+            color: #1e293b;
+        }
+
+        .messi-name {
+            display: block;
+            font-family: 'Outfit', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 800;
+            color: #0ea5e9;
+            margin-top: 10px;
+            text-align: right;
+        }
+    </style>
+</head>
+
+<body>
+
+    <script>
+        // Inyectar preloader y bloquear scroll mientras carga
+        (function() {
+            var pl = document.createElement('div');
+            pl.id = 'preloader';
+            pl.innerHTML = '<img class="loader-ball" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=200" alt="Pelota Mundial 2026"><div class="loader-text">Cargando...</div>';
+            document.documentElement.appendChild(pl);
+            // Bloquear scroll durante la animacion de carga
+            document.documentElement.style.overflow = 'hidden';
+        })();
+    </script>
+
+    <!-- Decoraciones de fondo (pelotas) -->
+    <div class="bg-decorations" aria-hidden="true">
+        <span class="bg-ball" style="left:8%;   top:8%;   animation-duration:9s;  font-size:3rem;">⚽</span>
+        <span class="bg-ball" style="left:80%;  top:14%;  animation-duration:12s; font-size:2.2rem;">⚽</span>
+        <span class="bg-ball" style="left:15%;  top:28%;  animation-duration:8s;  font-size:2.8rem;">⚽</span>
+        <span class="bg-ball" style="left:72%;  top:35%;  animation-duration:14s; font-size:3.2rem;">⚽</span>
+        <span class="bg-ball" style="left:5%;   top:50%;  animation-duration:10s; font-size:2.5rem;">⚽</span>
+        <span class="bg-ball" style="left:88%;  top:55%;  animation-duration:7s;  font-size:2rem;">⚽</span>
+        <span class="bg-ball" style="left:40%;  top:65%;  animation-duration:11s; font-size:3rem;">⚽</span>
+        <span class="bg-ball" style="left:20%;  top:78%;  animation-duration:13s; font-size:2.3rem;">⚽</span>
+        <span class="bg-ball" style="left:75%;  top:82%;  animation-duration:9s;  font-size:2.7rem;">⚽</span>
+        <span class="bg-ball" style="left:55%;  top:92%;  animation-duration:6s;  font-size:2rem;">⚽</span>
+    </div>
+
+    <!-- 1. SECCIÓN CONTENEDOR FIGURITA (Álbum) -->
+    <section class="sticker-header-container">
+        <div class="card-sticker">
+            <!-- Capa de brillo holográfico diagonal -->
+            <div class="shimmer-overlay"></div>
+            <!-- Marco blanco interior -->
+            <div class="sticker-inner-frame"></div>
+
+            <!-- Giant #10 top-left (semi-transparente) -->
+            <div class="sticker-bg-number-top">10</div>
+
+            <!-- FIFA Logo top-right -->
+            <div class="sticker-fifa-logo">
+                <span class="trophy">🏆</span>
+                <span class="text">FIFA</span>
+            </div>
+
+            <!-- Giant 10 detrás del bebé -->
+            <div class="sticker-bg-number-center">10</div>
+
+            <!-- Foto del Bebé -->
+            <div class="sticker-photo-container">
+                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?w=400" alt="Mateo" class="sticker-photo">
+            </div>
+
+            <!-- Bandera Argentina Capsule (Derecha) -->
+            <div class="sticker-flag-pill">
+                <div class="sticker-flag-circle"></div>
+                <span class="sticker-flag-text">ARG</span>
+            </div>
+
+            <!-- Banners inferiores -->
+            <div class="sticker-bottom-banners">
+                <!-- Nombre y stats (Verde FIFA) -->
+                <div class="sticker-banner-green">
+                    <div class="sticker-name-line1">MATEO</div>
+                    <div class="sticker-name-line2">GONZALEZ</div>
+                    <div class="sticker-stats">15-6-2018 | 128 cm | 28 kg</div>
+                </div>
+
+                <!-- Club y Panini (Amarillo) -->
+                <div class="sticker-banner-yellow">
+                    <span class="sticker-club-text">SALÓN EL ESTADIO (ARG)</span>
+                    <div class="sticker-panini-logo">
+                        <div class="panini-box">
+                            <span class="panini-text">PANINI</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Número figurita esquina inferior derecha -->
+            <div class="sticker-number-badge">#10</div>
+        </div>
+    </section>
+
+    <!-- 2. SECCIÓN TEXTO DE INVITACIÓN -->
+    <section class="invitation-text-section">
+        <!-- Número gigante de fondo -->
+        <div class="inv-bg-number">8</div>
+
+        <!-- Estrellas de campeón -->
+        <div class="inv-stars">
+            <span class="inv-star">★</span>
+            <span class="inv-star">★</span>
+            <span class="inv-star">★</span>
+        </div>
+
+        <!-- Badge -->
+        <div class="inv-age-badge">
+            <span>⚽ &nbsp;Cumpleaños · Edición Especial</span>
+        </div>
+
+        <!-- Nombre -->
+        <span class="inv-name">Mateo</span>
+
+        <!-- "cumple" label -->
+        <span class="inv-cumple-label">cumple</span>
+
+        <!-- Número + AÑOS en fila -->
+        <div class="inv-age-row">
+            <strong class="inv-age-number">8</strong>
+            <span class="inv-age-anos">AÑOS</span>
+        </div>
+
+        <!-- Subtitulo -->
+        <p class="invitation-subtitle">¡Y lo queremos festejar a lo grande con todos! 🎉</p>
+    </section>
+
+    <!-- 3. SECCIÓN CUENTA REGRESIVA -->
+    <section class="countdown-section">
+        <h2 class="countdown-title">⏱️ Faltan para el partido...</h2>
+        <div id="countdown" class="countdown-grid">
+            <div class="countdown-block">
+                <span id="dias" class="countdown-number">06</span>
+                <span class="countdown-label">Días</span>
+            </div>
+            <div class="countdown-block">
+                <span id="horas" class="countdown-number">20</span>
+                <span class="countdown-label">Hs</span>
+            </div>
+            <div class="countdown-block">
+                <span id="minutos" class="countdown-number">13</span>
+                <span class="countdown-label">Min</span>
+            </div>
+            <div class="countdown-block">
+                <span id="segundos" class="countdown-number">14</span>
+                <span class="countdown-label">Seg</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. SECCIÓN DETALLES DEL EVENTO -->
+    <section class="details-section">
+        <h2 class="details-title" data-aos="fade-up">📋 Datos del festejo</h2>
+        <div class="details-list">
+            <!-- Card Fecha -->
+            <div class="detail-card" data-aos="fade-right" data-aos-delay="100">
+                <div class="detail-icon-wrapper">
+                    <i class="ph-bold ph-calendar"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Fecha</span>
+                    <span class="detail-value">Martes 24 de junio de 2026</span>
+                </div>
+            </div>
+
+            <!-- Card Hora -->
+            <div class="detail-card" data-aos="fade-left" data-aos-delay="200">
+                <div class="detail-icon-wrapper">
+                    <i class="ph-bold ph-clock"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Hora</span>
+                    <span class="detail-value">17:00 hs</span>
+                    <span class="detail-subtext">"No llegues tarde al partido"</span>
+                </div>
+            </div>
+
+            <!-- Card Lugar -->
+            <div class="detail-card" data-aos="fade-right" data-aos-delay="300">
+                <div class="detail-icon-wrapper">
+                    <i class="ph-bold ph-map-pin"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Lugar</span>
+                    <span class="detail-value">Salón El Estadio</span>
+                </div>
+            </div>
+
+            <!-- Card Dirección -->
+            <div class="detail-card" data-aos="fade-left" data-aos-delay="400">
+                <div class="detail-icon-wrapper">
+                    <i class="ph-bold ph-map-trifold"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Dirección</span>
+                    <span class="detail-value">Av. Rivadavia 1234, Buenos Aires</span>
+                </div>
+            </div>
+
+            <!-- Card Vestimenta -->
+            <div class="detail-card" data-aos="fade-up" data-aos-delay="500">
+                <div class="detail-icon-wrapper">
+                    <i class="ph-bold ph-t-shirt"></i>
+                </div>
+                <div class="detail-info">
+                    <span class="detail-label">Vestimenta</span>
+                    <span class="detail-value">"Podés venir con la camiseta 🩵🤍"</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN MESSI -->
+    <section class="messi-section" data-aos="fade-up">
+        <div class="messi-container">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg" alt="Messi" class="messi-img">
+            <div class="messi-bubble">
+                <p class="messi-quote">"Ey, te estamos esperando para levantar la copa en el cumple de Mateo. ¡No podés faltar, eh!"</p>
+                <span class="messi-name">- Leo Messi 🐐</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. SECCIÓN MAPA -->
+    <section class="map-section" data-aos="fade-up">
+        <h2 class="map-title">📍 ¿Cómo llegar?</h2>
+        <div class="map-container">
+            <iframe src="https://maps.google.com/maps?q=Av.+Rivadavia+1234,+Buenos+Aires&output=embed" width="100%" height="300" style="border:0; display:block;" allowfullscreen="" loading="lazy">
+            </iframe>
+        </div>
+        <a href="https://maps.google.com/?q=Av.+Rivadavia+1234,+Buenos+Aires" target="_blank" class="btn-map">
+            Abrir en Maps ⚽
+        </a>
+    </section>
+
+    <!-- 6. SECCIÓN Confirmación de asistencia -->
+    <section class="confirmacion-section" data-aos="fade-up">
+        <div class="confirmacion-emoji">📋</div>
+        <h2 class="confirmacion-title">¿Confirmás tu asistencia al partido?</h2>
+        <p class="confirmacion-subtitle">Avisános antes del 20 de junio</p>
+
+        <div class="confirmacion-buttons">
+            <a href="https://api.whatsapp.com/send/?phone=5491139587328&text=%C2%A1Confirmo+asistencia+al+cumple+de+Mateo+%E2%9A%BD+el+24+de+junio%21" target="_blank" class="btn-confirmacion-yes">
+                ✅ ¡Estoy en la cancha!
+            </a>
+
+            <a href="https://api.whatsapp.com/send/?phone=5491139587328&text=Lamentablemente+no+voy+a+poder+ir+al+cumple+de+Mateo+%F0%9F%98%94" target="_blank" class="btn-confirmacion-no">
+                😔 Me pierdo el partido
+            </a>
+        </div>
+    </section>
+
+    <!-- 7. SECCIÓN FOOTER -->
+    <footer class="footer-section">
+        <div class="footer-title">⚽ El cumple de Mateo ⚽</div>
+        <div class="footer-subtitle">24 de junio de 2026</div>
+        <div class="footer-divider"></div>
+        <div class="footer-brand">
+            Invitación digital creada con <br>
+            <a href="https://linkvitio.com" target="_blank">Linkvitio 🎀</a>
+        </div>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    <script>
+        // AOS Init - se inicializa luego del preloader para evitar el flash
+        // (se mueve al callback del preloader abajo)
+
+        // Cuenta Regresiva
+        const fechaObjetivo = new Date('2026-06-24T17:00:00-03:00');
+
+        function actualizarCountdown() {
+            const ahora = new Date();
+            const diff = fechaObjetivo - ahora;
+
+            if (diff <= 0) {
+                document.getElementById('countdown').innerHTML = '<p style="color:#ffffff;font-size:1.4rem;font-weight:800;grid-column: span 4;padding:10px 0;">🎉 ¡Comenzó el partido!</p>';
+                return;
+            }
+
+            const dias = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const horas = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutos = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const segundos = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('dias').textContent = String(dias).padStart(2, '0');
+            document.getElementById('horas').textContent = String(horas).padStart(2, '0');
+            document.getElementById('minutos').textContent = String(minutos).padStart(2, '0');
+            document.getElementById('segundos').textContent = String(segundos).padStart(2, '0');
+        }
+
+        actualizarCountdown();
+        setInterval(actualizarCountdown, 1000);
+
+        // Confeti de Argentina al hacer el primer scroll
+        let confetiLanzado = false;
+        window.addEventListener('scroll', () => {
+            if (!confetiLanzado && window.scrollY > 50) {
+                confetiLanzado = true;
+                confetti({
+                    particleCount: 150,
+                    spread: 90,
+                    origin: { y: 0.4 },
+                    colors: ['#ffffff', '#74ACDF'],
+                    ticks: 300
+                });
+            }
+        }, { passive: true });
+
+        // Ocultar Preloader e inicializar AOS
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const preloader = document.getElementById('preloader');
+                if (preloader) {
+                    preloader.classList.add('exit');
+                }
+                // Restaurar scroll al terminar el fade del preloader
+                setTimeout(() => {
+                    document.documentElement.style.overflow = '';
+                    AOS.init({ duration: 700, once: true, offset: 80 });
+                }, 800);
+            }, 1200);
+        });
+
+        // Pelota interactiva que reacciona al scroll
+        (function() {
+            let lastScrollY = window.scrollY;
+            let ballRotation = 0;
+
+
+
+            // Rotar la pelota en base al scroll real del usuario
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+                const delta = currentScrollY - lastScrollY;
+
+                if (delta !== 0) {
+                    const ball = document.getElementById('interactive-ball');
+                    // 1px de scroll = 0.5 grados de rotación (física de rodamiento natural)
+                    ballRotation += delta * 0.5;
+                    if (ball) {
+                        ball.style.transform = `rotate(${ballRotation}deg)`;
+                    }
+                }
+
+                lastScrollY = currentScrollY;
+            }, { passive: true });
+
+            // Click interactivo en la pelota
+            window.addEventListener('load', () => {
+                const container = document.getElementById('interactive-ball-container');
+                const tooltip = document.getElementById('ball-tooltip');
+                let tooltipTimeout;
+
+                if (container) {
+                    container.addEventListener('click', () => {
+                        // Reiniciar animación de click
+                        container.classList.remove('clicked');
+                        void container.offsetWidth; // trigger reflow
+                        container.classList.add('clicked');
+
+                        // Mostrar tooltip
+                        if (tooltip) {
+                            tooltip.classList.add('show');
+                            clearTimeout(tooltipTimeout);
+                            tooltipTimeout = setTimeout(() => {
+                                tooltip.classList.remove('show');
+                            }, 2500);
+                        }
+                    });
+                }
+            });
+        })();
+    </script>
+
+    <!-- Pelota interactiva en el viewport -->
+    <div id="interactive-ball-container">
+        <div id="ball-tooltip" class="ball-tooltip">¡Vamos por la 4ta! 🏆🇦🇷</div>
+        <img id="interactive-ball" src="https://images.unsplash.com/photo-1579952363873-27f3bade9f55?w=200" alt="Pelota Mundial 2026" style="transform: rotate(0deg);">
+    </div>
+
+
+</body>
+</html>
