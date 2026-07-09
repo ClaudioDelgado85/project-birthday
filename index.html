@@ -841,6 +841,15 @@
             --fondo-gradiente: linear-gradient(160deg, #B57EDC 0%, #FF7BAA 100%);
         }
 
+        /* Ajustes para móviles */
+        @media (max-width: 768px) {
+            /* Eliminamos el delay de las animaciones en móvil para evitar que
+               las tarjetas queden invisibles o aparezcan con retraso abrupto al hacer scroll */
+            [data-aos] {
+                transition-delay: 0s !important;
+            }
+        }
+
     </style>
 </head>
 
@@ -933,58 +942,68 @@
         <h2 class="details-title" data-aos="fade-up">📋 Datos del festejo</h2>
         <div class="details-list">
             <!-- Card Fecha -->
-            <div class="detail-card" data-aos="fade-right" data-aos-delay="100">
-                <div class="detail-icon-wrapper">
-                    <i class="ph-bold ph-calendar"></i>
-                </div>
-                <div class="detail-info">
-                    <span class="detail-label">Fecha</span>
-                    <span class="detail-value">Sábado 11 de julio de 2026</span>
+            <div data-aos="fade-up" data-aos-delay="100">
+                <div class="detail-card">
+                    <div class="detail-icon-wrapper">
+                        <i class="ph-bold ph-calendar"></i>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">Fecha</span>
+                        <span class="detail-value">Sábado 11 de julio de 2026</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Card Hora -->
-            <div class="detail-card" data-aos="fade-left" data-aos-delay="200">
-                <div class="detail-icon-wrapper">
-                    <i class="ph-bold ph-clock"></i>
-                </div>
-                <div class="detail-info">
-                    <span class="detail-label">Hora</span>
-                    <span class="detail-value">17:00 hs</span>
-                    <span class="detail-subtext">"Que no te gane la magia 💫"</span>
+            <div data-aos="fade-up" data-aos-delay="200">
+                <div class="detail-card">
+                    <div class="detail-icon-wrapper">
+                        <i class="ph-bold ph-clock"></i>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">Hora</span>
+                        <span class="detail-value">17:00 hs</span>
+                        <span class="detail-subtext">"Que no te gane la magia 💫"</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Card Lugar -->
-            <div class="detail-card" data-aos="fade-right" data-aos-delay="300">
-                <div class="detail-icon-wrapper">
-                    <i class="ph-bold ph-map-pin"></i>
-                </div>
-                <div class="detail-info">
-                    <span class="detail-label">Lugar</span>
-                    <span class="detail-value">Casa de mis padres</span>
+            <div data-aos="fade-up" data-aos-delay="300">
+                <div class="detail-card">
+                    <div class="detail-icon-wrapper">
+                        <i class="ph-bold ph-map-pin"></i>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">Lugar</span>
+                        <span class="detail-value">Casa de mis padres</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Card Dirección -->
-            <div class="detail-card" data-aos="fade-left" data-aos-delay="400">
-                <div class="detail-icon-wrapper">
-                    <i class="ph-bold ph-map-trifold"></i>
-                </div>
-                <div class="detail-info">
-                    <span class="detail-label">Dirección</span>
-                    <span class="detail-value">B° 500 Mza 20 Casa 11</span>
+            <div data-aos="fade-up" data-aos-delay="400">
+                <div class="detail-card">
+                    <div class="detail-icon-wrapper">
+                        <i class="ph-bold ph-map-trifold"></i>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">Dirección</span>
+                        <span class="detail-value">B° 500 Mza 20 Casa 11</span>
+                    </div>
                 </div>
             </div>
 
             <!-- Card Vestimenta -->
-            <div class="detail-card" data-aos="fade-up" data-aos-delay="500">
-                <div class="detail-icon-wrapper">
-                    <i class="ph-bold ph-sparkle"></i>
-                </div>
-                <div class="detail-info">
-                    <span class="detail-label">Vestimenta</span>
-                    <span class="detail-value">"Venite con la mejor pinta que tengas ✨"</span>
+            <div data-aos="fade-up" data-aos-delay="500">
+                <div class="detail-card">
+                    <div class="detail-icon-wrapper">
+                        <i class="ph-bold ph-sparkle"></i>
+                    </div>
+                    <div class="detail-info">
+                        <span class="detail-label">Vestimenta</span>
+                        <span class="detail-value">"Venite con la mejor pinta que tengas ✨"</span>
+                    </div>
                 </div>
             </div>
         </div>
